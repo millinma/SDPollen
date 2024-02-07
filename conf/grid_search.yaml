@@ -3,9 +3,9 @@ defaults:
   - dataset: ???
   - model: ???
   - optimizer: ???
-  - scheduler: ???
-  - augmentation: ???
-  - curriculum: ???
+  - scheduler: None
+  - augmentation: None
+  - curriculum: None
   - training: Epoch
   - plotting: Default
   - /hydra/callbacks:
@@ -40,12 +40,3 @@ hydra:
       model: ModifiedEfficientNet-b4 , ModifiedEfficientNet-b4-T, ResNet50-T, ModifiedEfficientNet-T, ResNet50, ModifiedEfficientNet
       optimizer: Adam
       optimizer.lr: 0.001 , 0.0001
-      scheduler: None
-      augmentation: None
-      curriculum: None
-      # curriculum/scoring: ???
-      # curriculum/pacing: ???
-      # curriculum.pacing.inital_size: ???
-      # curriculum.pacing.final_iteration: ???
-      # curriculum/type: ???
-      # curriculum/sampling: ???
