@@ -37,6 +37,12 @@ hydra:
       +seed: 1, 2, 3
       +batch_size: 64
       dataset: Pollen.Augsburg15
-      model: ModifiedEfficientNet-b4 , ModifiedEfficientNet-b4-T, ResNet50-T, ModifiedEfficientNet-T, ResNet50, ModifiedEfficientNet
+      model:
+        ResNet50,
+        ModifiedEfficientNet,
+        ModifiedEfficientNet-b4,
+        ResNet50-T,
+        ModifiedEfficientNet-T,
+        ModifiedEfficientNet-b4-T
       optimizer: Adam
       optimizer.lr: 0.001 , 0.0001
