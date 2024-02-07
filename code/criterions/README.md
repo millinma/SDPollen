@@ -5,11 +5,12 @@
 Criterions are specified in the `dataset` configuration file, so a criterion is always dataset specific.
 Hydra configurations can be found in the `conf/dataset/criterion` directory.
 
-Weighted criterions are **still WIP**.
-
 #### CrossEntropyLoss
 
 See [torch.nn.CrossEntropyLoss](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss).
+
+Balanced weights can be used by specifying the `weight: balanced` in the criterion configuration.
+The loss is weighted by the inverse class frequency. Weights are computed as `1 / (class_frequency)` and normalized to sum to 1.
 
 #### MSELoss
 
