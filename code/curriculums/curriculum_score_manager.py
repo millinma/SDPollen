@@ -31,8 +31,6 @@ class CurriculumScoreManager:
         configs, runs = self.scoring_function.preprocess()
         self._create_configs(runs, configs)
         self._create_mappings(runs)
-        if self.cfg._use_slurm:
-            self._add_to_slurm(runs)
         return configs, runs
 
     def run(self, run_config: DictConfig, run_name: str) -> None:
@@ -83,34 +81,6 @@ class CurriculumScoreManager:
         save_yaml(
             os.path.join(self.output_directory, "mappings.yaml"),
             OmegaConf.to_container(mappings, resolve=True),
-        )
-
-    def _add_to_slurm(self, runs: list) -> None:
-        curriculum_dir = os.path.dirname(self.output_directory)
-        score_path = os.path.join(
-            self.output_directory, self.cfg.curriculum.scoring.id+".csv")
-        if not os.path.exists(score_path):
-            os.makedirs(os.path.join(curriculum_dir,
-                        "_slurm_postprocess"), exist_ok=True)
-            save_yaml(os.path.join(
-                curriculum_dir, "_slurm_postprocess",
-                self.cfg.curriculum.scoring.id+".yaml"),
-                OmegaConf.to_container(self.cfg, resolve=True)
-            )
-        if not os.path.exists(os.path.join(curriculum_dir, "slurm.yaml")):
-            jobs = []
-        else:
-            jobs = load_yaml(
-                os.path.join(curriculum_dir, "slurm.yaml"))
-        for run_name in runs:
-            run_path = f"{self.cfg.curriculum.scoring.name}/{run_name}"
-            scores = os.path.join(
-                self.output_directory, run_name, "scores.csv")
-            if run_path not in jobs and not os.path.exists(scores):
-                jobs.append(run_path)
-        save_yaml(
-            os.path.join(curriculum_dir, "slurm.yaml"),
-            jobs,
         )
 
     def _visualize_score(self, score_id: str) -> None:

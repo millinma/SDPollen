@@ -6,10 +6,9 @@ defaults:
     - curriculum_score
 
 results_dir: results
-experiment_id: default_grid
+experiment_id: reproduce
 batch_size: 32
-_progress_bar: False
-_use_slurm: False
+_progress_bar: true
 
 
 hydra:

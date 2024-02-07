@@ -23,7 +23,6 @@ def main(cfg: DictConfig) -> None:
     os.makedirs(os.path.dirname(cfg_path), exist_ok=True)
     OmegaConf.save(cfg, cfg_path)
 
-    # ? Only launch training if slurm is not used
     trainer = ModularTaskTrainer(
         cfg=cfg,
         output_directory=output_dir,

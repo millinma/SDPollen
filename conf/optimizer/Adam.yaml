@@ -1,4 +1,3 @@
 id: Adam-${optimizer.lr}
 name: Adam
 lr: ???
-#pretrained: results/default_grid/CIFAR10_ModifiedEfficientNet_Adam_256_5_None_None_None_1/_best/best_optimizer.pth.tar

@@ -13,9 +13,6 @@ def main(cfg: DictConfig) -> None:
     cs = CurriculumScoreManager(cfg, output_directory)
     configs, runs = cs.preprocess()
 
-    if cfg._use_slurm:
-        return
-
     for config, run in zip(configs, runs):
         cs.run(config, run)
 

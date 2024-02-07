@@ -3,19 +3,18 @@ defaults:
   - dataset: ???
   - model: ???
   - optimizer: ???
-  - scheduler: ???
-  - augmentation: ???
-  - curriculum: ???
+  - scheduler: None
+  - augmentation: None
+  - curriculum: None
   - training: Epoch
   - plotting: Default
   - /hydra/callbacks:
       - save_grid_search_config
 
 results_dir: results
-experiment_id: default_grid
+experiment_id: reproduce
 _filters: []
-_use_slurm: False
-_progress_bar: False
+_progress_bar: true
 
 hydra:
   output_subdir: null
@@ -38,15 +37,12 @@ hydra:
       +seed: 1, 2, 3
       +batch_size: 64
       dataset: Pollen.Augsburg15
-      model: ModifiedEfficientNet-b4 , ModifiedEfficientNet-b4-T, ResNet50-T, ModifiedEfficientNet-T, ResNet50, ModifiedEfficientNet
+      model:
+        ResNet50,
+        ModifiedEfficientNet,
+        ModifiedEfficientNet-b4,
+        ResNet50-T,
+        ModifiedEfficientNet-T,
+        ModifiedEfficientNet-b4-T
       optimizer: Adam
       optimizer.lr: 0.001 , 0.0001
-      scheduler: None
-      augmentation: None
-      curriculum: None
-      # curriculum/scoring: ???
-      # curriculum/pacing: ???
-      # curriculum.pacing.inital_size: ???
-      # curriculum.pacing.final_iteration: ???
-      # curriculum/type: ???
-      # curriculum/sampling: ???

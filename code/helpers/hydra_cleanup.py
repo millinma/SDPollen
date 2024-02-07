@@ -15,10 +15,6 @@ def on_multirun_end(results_dir, experiment_id) -> None:
 
 
 def on_curriculum_end(results_dir, experiment_id) -> None:
-    post_dir = os.path.join(results_dir, experiment_id,
-                            "curriculum", "_slurm_postprocess")
-    if os.path.exists(post_dir):
-        shutil.rmtree(post_dir)
     dir = os.path.join(results_dir, experiment_id, "curriculum")
     for base_dir, _, files in os.walk(dir):
         if not os.path.exists(os.path.join(base_dir, "score.yaml")):

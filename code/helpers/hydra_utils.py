@@ -10,11 +10,6 @@ class SaveGridSearchConfigCallback(Callback):
     def on_multirun_start(self, config: DictConfig, **kwargs) -> None:
         self.results_dir = config.hydra.sweep.dir
 
-        # ? Delete slurm run list if still exsists
-        p = os.path.join(self.results_dir, "slurm.yaml")
-        if os.path.exists(p):
-            os.remove(p)
-
         os.makedirs(self.results_dir, exist_ok=True)
         self.output_file_path = os.path.join(self.results_dir, "config.yaml")
 
@@ -49,13 +44,7 @@ class SaveGridSearchConfigCallback(Callback):
 
 class CurriculumScoreConfigCallback(Callback):
     def on_multirun_start(self, config: DictConfig, **kwargs) -> None:
-        # ? Delete slurm run list if still exsists
-        p = os.path.join(config.hydra.sweep.dir, "slurm.yaml")
-        if os.path.exists(p):
-            os.remove(p)
-        p = os.path.join(config.hydra.sweep.dir, "_slurm_postprocess")
-        if os.path.exists(p):
-            shutil.rmtree(p)
+        pass
 
 
 # ? Initialize hydra if not already initialized for all modules
