@@ -1,0 +1,3 @@
+id: ResNet50
+name: ResNet50
+transfer: False

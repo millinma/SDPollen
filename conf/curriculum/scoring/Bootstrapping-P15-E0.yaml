@@ -1,0 +1,5 @@
+id: Bootstrapping-P15-E0
+name: Bootstrapping
+run_name: Pollen.Augsburg15_ModifiedEfficientNet_#_64_Epoch_100_None_None_None_#
+stop: best # "best" or "last"
+subset: train # train, dev, test

@@ -1,0 +1,29 @@
+defaults:
+  - _self_
+  - curriculum/scoring: ???
+  - plotting: Default
+  - /hydra/callbacks:
+    - curriculum_score
+
+results_dir: results
+experiment_id: default_grid
+batch_size: 32
+_progress_bar: False
+_use_slurm: False
+
+
+hydra:
+  mode: MULTIRUN
+  sweep:
+    dir: ${results_dir}/${experiment_id}/curriculum/
+    subdir: ${curriculum.scoring.name}
+  sweeper:
+    params:
+      curriculum/scoring: 
+        Bootstrapping-P15-R.yaml,
+        Bootstrapping-P15-E0.yaml,
+        Bootstrapping-P15-E4.yaml,
+        Bootstrapping-P15-RT.yaml,
+        Bootstrapping-P15-E0T.yaml,
+        Bootstrapping-P15-E4T.yaml        
+        

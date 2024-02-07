@@ -1,0 +1,12 @@
+figsize: [10, 5]
+latex: true
+filetypes: [png, pdf]
+pickle: true
+context: notebook
+palette: colorblind
+replace_none: true
+
+rcParams:
+  font.serif: Palatino
+  font.family: serif
+  legend.fontsize: 9

@@ -1,0 +1,5 @@
+id: Epoch
+type: Epoch
+num_iterations: 100
+eval_frequency: 1
+save_frequency: 5

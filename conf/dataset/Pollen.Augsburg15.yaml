@@ -1,0 +1,13 @@
+defaults:
+  - _self_
+  - criterion: CrossEntropyLoss-B
+
+id: Pollen.Augsburg15
+name: Pollen.Augsburg
+path: data
+metrics:
+  - accuracy
+  - uar
+  - f1
+tracking_metric: accuracy
+n_dataset_classes: 15

@@ -1,0 +1,7 @@
+id: SAM-${optimizer.lr}
+name: SAM
+base_optimizer: Adam
+lr: ??? 
+# Any further base optimizer parameters as kwargs here
+#rho: 0.05
+#adaptive: false

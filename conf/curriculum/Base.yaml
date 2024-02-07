@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - scoring: ???
+  - pacing: ???
+  - type: ???
+  - sampling: ???
+
+id: "\
+  ${curriculum.scoring.id}-\
+  ${curriculum.pacing.id}-\
+  ${curriculum.type.short}-\
+  ${curriculum.sampling.short}"
+_results_dir: ${results_dir}
+_experiment_id: ${experiment_id}

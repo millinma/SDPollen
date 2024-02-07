@@ -1,0 +1,10 @@
+figsize: [10, 5]
+latex: false
+filetypes: [png]
+pickle: false
+context: notebook
+palette: colorblind
+replace_none: false
+
+rcParams:
+  legend.fontsize: 9
