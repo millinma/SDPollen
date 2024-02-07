@@ -1,6 +1,8 @@
 # Sample Difficulty for Automatic Pollen Classification 
 
-This repository is designed to train models on the [Augsburg15](https://www.sciencedirect.com/science/article/pii/S0048969721040043) pollen classification dataset and to produce likelihood-based difficulty samples. The correspoonding paper has been submitted to the IEEE EMBC2024 conference and is currently under review.  
+This repository is designed to train models on the [Augsburg15](https://www.sciencedirect.com/science/article/pii/S0048969721040043) pollen classification dataset and to produce likelihood-based difficulty samples. The correspoonding paper has been submitted to the IEEE EMBC2024 conference and is currently under review. 
+
+Code base by **Simon David Noel Rampp**. Contributions by **Manuel Milling** and **Andreas Triantafyllopoulos**.
 
 
 ## Usage
