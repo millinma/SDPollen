@@ -1,5 +1,4 @@
 id: ModifiedEfficientNet-b4-T
 name: ModifiedEfficientNet
 transfer: True
-#pretrained: results/default_grid/CIFAR10_ModifiedEfficientNet_Adam_256_5_None_None_None_1/_best/best_model.pth.tar
 scaling_type: efficientnet-b4
