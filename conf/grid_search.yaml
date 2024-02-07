@@ -12,7 +12,7 @@ defaults:
       - save_grid_search_config
 
 results_dir: results
-experiment_id: default_grid
+experiment_id: reproduce
 _filters: []
 _progress_bar: true
 

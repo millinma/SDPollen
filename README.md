@@ -1,60 +1,71 @@
-# Sample Difficulty for Automatic Pollen Classification 
+# Sample Difficulty for Automatic Pollen Classification
 
-This repository is designed to train models on the [Augsburg15](https://www.sciencedirect.com/science/article/pii/S0048969721040043) pollen classification dataset and to produce likelihood-based difficulty samples. The correspoonding paper has been submitted to the IEEE EMBC2024 conference and is currently under review. 
+This repository is designed to train models on the [Augsburg15](https://www.sciencedirect.com/science/article/pii/S0048969721040043) pollen classification dataset (available upon request) and to produce likelihood-based difficulty samples.
+
+The corresponding paper has been submitted to the IEEE EMBC2024 conference and is currently under review.
 
 Code base by **Simon David Noel Rampp**. Contributions by **Manuel Milling** and **Andreas Triantafyllopoulos**.
 
+## Installation
 
-## Usage
+This repository is intended to be used with Python `3.10.11` and PyTorch `2.1.0+cu121`.
 
-This section gives a rough overview for quick usage of the repo. This repo is based on hydra and according configuration files in `conf/` directory. 
-
-
-### Local Machine Installation
-
-For installation on your local machine (without poetry, just pip i assume), create a virtual environment called `.venv` and install the requirements:
+Create a virtual environment install the requirements:
 
 ```bash
 python -m venv .venv # and activate it
 pip install -r requirements.txt
 ```
 
-If your local machine uses different cuda versions, you can install the correct version of pytorch [here](https://pytorch.org/get-started/locally/). Check if cuda is available and install it manually if necessary.
+## Paper Reproduction
 
-```bash
-python -c "import torch; print(torch.cuda.is_available())" # verify cuda is available
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 #your version here
+### Initial Model Training (Section III. A.)
+
+Data has to be placed in `data/`. Configurations of the grid search and paths can be adjusted in `conf/grid_search.yaml`. By default, the paper's grid search is already configured. Results including aggregation over training runs are created in `results/reproduce/`.
+
+The initial grid search can be reproduced by executing:
+
+```python
+python code/training.py
 ```
 
-### Training
+### Sample Difficulty Estimation (Section III. B.)
 
-- Data has to be placed in `data/`.
-- Configurations of the grid search and paths can be adjusted in `conf/grid_search.yaml`.
-- Run `code/training.py` to run the grid search training.
-- Results including aggregation over training runs are created in `results/default_grid/`.
+Configurations of the grid search and paths can be adjusted in `conf/curriculum.yaml` and have to be consistent with existing training runs. By default, the paper's difficulty estimation is already configured. Results are created in `results/reproduce/curriculum`.
 
-### Sample Difficulty Estimation
+The sample difficulty estimation can be reproduced by executing:
 
-- Configurations of the grid search and paths can be adjusted in `conf/curriculum.yaml` and have to be consistent with existing training runs.
-- Run `code/curriculum.py` to run the sample difficulty estimation. 
-Results will be stored in `results/default_grid/curriculum`.
-- To select the estimated easiest and hardest samples run `code/easiest_hardest_file_selection.py`. Files will be stored in `results/default_grid/file_selection`
+```python
+python code/curriculum.py
+```
 
-## Structure
+### Easiest and Hardest Sample Selection (Section III. E.)
+
+The easiest and hardest samples are selected based on the estimated difficulty scores. Results are created in `results/reproduce/file_selection`.
+
+The sample selection can be reproduced by executing:
+
+```python
+python code/easiest_hardest_file_selection.py
+```
+
+## Repository Structure
 
 This part contains a more in-depth discussion of the repository structure. Please also refer to the READMEs in the subfolders.
 
 ### Hydra Configuration
 
-Optionally, you can use Hydra to create configuration files for your experiments. All Hydra configuration files are located in the `conf/` directory.
-Scripts like `training.py` use Hydra to load the configuration files. To run a script with a specific configuration file, use the following command:
+This repository uses [Hydra](https://hydra.cc/) for configuration management.
+All Hydra configuration files are located in the `conf/` directory.
+Scripts like `training.py` use Hydra to load the configuration files.
+
+To run a script with a specific configuration file by executing the following command:
 
 ```bash
 python code/training.py --config-name=your_config.yaml
 ```
 
 We use Hydra for grid searches over hyperparameters in the `training.py`.
-Additionally Hydra can be used to run a single experiment with a specific configuration file.
 All parameters can be specified in separate `configuration files` or as primitives (see example below).
 
 ### Creating a Configuration File
@@ -62,10 +73,9 @@ All parameters can be specified in separate `configuration files` or as primitiv
 When creating a configuration file, you can specify the parameters in the following way:
 
 ```yaml
-# conf/model/Cnn10-Example.yaml
-id: Cnn10-Example
-name: Cnn10
-output_dim: 10
+# conf/model/ResNet50-Example.yaml
+id: ResNet50-Example
+name: ResNet50
 _private: parameter
 # ... other parameters
 ```
@@ -83,7 +93,6 @@ Their goal is to ease the understanding of the code, but not to be a complete do
 
 - [Criterions](./code/criterions/README.md): Criterions for the models.
 - [Curriculums](./code/curriculums/README.md): Curriculums for the datasets.
-- [Datasets](./code/datasets/README.md): Datasets for the models.
 - [Helpers](./code/helpers/README.md): Helper functions for the modules.
 - [Models](./code/models/README.md): Model definitions.
 - [Optimizers](./code/optimizers/README.md): Optimizers for the models.
