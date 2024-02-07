@@ -4,11 +4,6 @@ Any helper functions or classes that are used in multiple modules can be placed 
 
 ### Documentation
 
-#### Slurm
-
-Slurm Manager creates a slurm array job which creates separate jobs for each run of the grid search. Additionally it waits for all jobs to finish. The array job is specified in `gpu_scripts/grid_search_array.sh`.
-Slurm Training gets called by the array job and runs the training for one run of the grid search.
-
 #### BaseRegistry
 
 `BaseRegistry` is a base class for registries. It allows you to register classes or functions to a registry and retrieve them by name, e.g. for configuration with Hydra.

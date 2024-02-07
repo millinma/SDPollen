@@ -8,8 +8,7 @@ defaults:
 results_dir: results
 experiment_id: default_grid
 batch_size: 32
-_progress_bar: False
-_use_slurm: False
+_progress_bar: true
 
 
 hydra:

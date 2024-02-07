@@ -1,7 +1,6 @@
 ## Curriculum Scores / Sample Difficulty
 
 All scoring functions must implement the `run` method which performs the actual scoring of a given run configuration.
-The `run` method can be called in parallel if the score consists of multiple runs (if `_use_slurm == True`).
 Additionally, scoring functions can override the `preprocess` and `postprocess` methods to perform any preprocessing or postprocessing steps deviating from the default behavior defined in `AbstractScore`.
 
 ### Results of a Scoring Function
