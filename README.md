@@ -2,9 +2,10 @@
 
 This repository is designed to train models on the [Augsburg15](https://www.sciencedirect.com/science/article/pii/S0048969721040043) pollen classification dataset (available upon request) and to produce likelihood-based difficulty samples.
 
-The corresponding paper has been submitted to the IEEE EMBC2024 conference and is currently under review.
+The code base is an early pre-release version of the [aucurriculum](https://github.com/autrainer/aucurriculum) package and its base package [autrainer](https://github.com/autrainer/autrainer) with custom additions for the Pollen dataset and corresponding experiment analysis. Code base by **Simon David Noel Rampp**. Contributions by **Manuel Milling** and **Andreas Triantafyllopoulos**.
 
-Code base by **Simon David Noel Rampp**. Contributions by **Manuel Milling** and **Andreas Triantafyllopoulos**.
+If you use any of the code in your research work, you are kindly asked to acknowledge the corresponding paper or the more recent base packages autrainer and aucurriculum in your publication:
+Paper has been accepted with Heliyon. The according citation will be updated soon.
 
 ## Installation
 
